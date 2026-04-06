@@ -1,6 +1,9 @@
 New-Item -ItemType Directory -Force -Path C:\Temp
 New-Item -ItemType Directory -Force -Path C:\Install
 Invoke-WebRequest 'https://raw.githubusercontent.com/BadKarma77/Public/refs/heads/main/NeverRed.ps1' -OutFile C:\Install/NeverRed.ps1
+#
+New-LocalUser -Name "l_admin" -AccountNeverExpires -PasswordNeverExpires $true
+Add-LocalGroupMember -Member "l_admin" -Group "Administrators"
 <#
 #Set-LocalUser -Name "l_admin" -AccountNeverExpires
 #Set-LocalUser -Name "l_admin" -PasswordNeverExpires $false
