@@ -23,6 +23,6 @@ if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]:
 #
 #C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -noexit -ExecutionPolicy Bypass -file "\\AZUVM337015\Neverred$\NeverRed.ps1" -ESFile \\AZUVM337015\Neverred$\LastSetting.txt
 #
-#C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -noexit -ExecutionPolicy Bypass -file "\\33storagecn.file.core.windows.net\profilescn\Neverred\NeverRed.ps1" -ESFile \\33storagecn.file.core.windows.net\profilescn\Neverred\LastSetting.txt
+C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -noexit -ExecutionPolicy Bypass -file "\\33storagecn.file.core.windows.net\profilescn\Neverred\NeverRed.ps1" -ESFile \\33storagecn.file.core.windows.net\profilescn\Neverred\LastSetting.txt
 #
 Write-Host "AIB Customization: Init.ps1 finished"
