@@ -2,13 +2,15 @@ Write-Host "AIB Customization: Init.ps1 started"
 #
 New-Item -ItemType Directory -Force -Path C:\Temp
 New-Item -ItemType Directory -Force -Path C:\Install
-Invoke-WebRequest 'https://raw.githubusercontent.com/BadKarma77/Public/refs/heads/main/NeverRed.ps1' -OutFile C:\Install/NeverRed.ps1
+#Invoke-WebRequest 'https://raw.githubusercontent.com/BadKarma77/Public/refs/heads/main/NeverRed.ps1' -OutFile C:\Install\NeverRed.ps1
+Invoke-WebRequest 'https://storagetmpblob33.blob.core.windows.net/never/NeverRed.ps1' -OutFile C:\Install\NeverRed.ps1
 #
-New-LocalUser -Name "l_admin" -AccountNeverExpires -PasswordNeverExpires $true
-Add-LocalGroupMember -Member "l_admin" -Group "Administrators"
-Add-LocalGroupMember -Member "l_admin" -Group "FSLogix Profile Exclude List"
+#New-LocalUser -Name "l_admin" -AccountNeverExpires -PasswordNeverExpires   # would ask for password
+#Add-LocalGroupMember -Member "l_admin" -Group "Administrators"
+#Add-LocalGroupMember -Member "l_admin" -Group "FSLogix Profile Exclude List"
 #Set-LocalUser -Name "l_admin" -AccountNeverExpires
 #Set-LocalUser -Name "l_admin" -PasswordNeverExpires $true
+#
 Remove-LocalGroupMember -Group "FSLogix Profile Include List" -Member "\Jeder"
 Remove-LocalGroupMember -Group "FSLogix ODFC Include List" -Member "\Jeder"
 
