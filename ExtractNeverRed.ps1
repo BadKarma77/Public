@@ -1,4 +1,5 @@
-# ExtractNeverRed.ps1 v.1.2 TS
+$Version = "ExtractNeverRed.ps1 v1.2 TS"
+Write-Host $Version -ForegroundColor Green
 
 param (
     [Parameter(Mandatory = $true)]
