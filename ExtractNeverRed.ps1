@@ -18,3 +18,4 @@ Writelog "* ExtractNeverRed.ps1 started *"
 Expand-Archive -Path $ZipPath -DestinationPath $Destination -Force
 Remove-Item -Path $ZipPath -Recurse -Force
 Rename-Item -path 'C:\Install\NeverRed-master' -NewName 'C:\Install\NeverRed'
+Writelog "ExtractNeverRed.ps1 finished"
