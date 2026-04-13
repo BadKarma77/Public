@@ -1,9 +1,8 @@
 $Version = "LangDE.ps1 v1.1 TS"
 Write-Host $Version -ForegroundColor Green
+Writelog "* LangDE.ps1 started *" 
 
 #$stopwatch = [System.Diagnostics.Stopwatch]::StartNew()
-
-Writelog "* LangDE.ps1 started *" 
 
 Disable-ScheduledTask -TaskName "\Microsoft\Windows\LanguageComponentsInstaller\Installation"
 Disable-ScheduledTask -TaskName "\Microsoft\Windows\LanguageComponentsInstaller\ReconcileLanguageResources"
@@ -24,4 +23,3 @@ Enable-ScheduledTask -TaskName "\Microsoft\Windows\LanguageComponentsInstaller\R
 #$elapsedTime = $stopwatch.Elapsed
 
 Writelog "* LangDE.ps1 finished *" 
-Write-Host "."
