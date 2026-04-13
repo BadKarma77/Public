@@ -16,7 +16,8 @@ Writelog "* ExtractNeverRed.ps1 started *"
 # $destination = "C:\Install\NeverRed"
 # $folderToExtract = "NeverRed-master"
 
-Write-Host $zipPath "'$zipPath'   '$destination'   '$folderToExtract'" -ForegroundColor Green
+Write-Host "'$zipPath'   '$destination'   '$folderToExtract'" -ForegroundColor Green
+Writelog "* ExtractNeverRed.ps1 started *"
 
 $tempPath = Join-Path $env:TEMP "ZipExtractTemp_$(Get-Random)"
 New-Item -ItemType Directory -Path $tempPath -Force | Out-Null
