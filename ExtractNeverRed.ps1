@@ -9,7 +9,7 @@ param (
     [string]$ExportFolder
 )
 
-Writelog "ExtractNeverRed started"
+Writelog "* ExtractNeverRed.ps1 started *"
 
 # $zipPath = "C:\Install\_Archives\NeverRed.zip"
 # $destination = "C:\Install\NeverRed"
