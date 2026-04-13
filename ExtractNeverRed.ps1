@@ -9,6 +9,8 @@ param (
     [string]$ExportFolder
 )
 
+Writelog "ExtractNeverRed started"
+
 # $zipPath = "C:\Install\_Archives\NeverRed.zip"
 # $destination = "C:\Install\NeverRed"
 # $folderToExtract = "NeverRed-master"
@@ -28,7 +30,7 @@ try {
             New-Item -ItemType Directory -Path $destination -Force | Out-Null
         }
         Copy-Item -Path "$sourceFolder\*" -Destination $destination -Recurse -Force
-        Write-Host "Ordner '$folderToExtract' erfolgreich exportiert." -ForegroundColor Green
+        # Write-Host "Ordner '$folderToExtract' erfolgreich exportiert." -ForegroundColor Green
     } else {
         Write-Error "Der Ordner '$folderToExtract' wurde in der ZIP-Datei nicht gefunden."
     }
