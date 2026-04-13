@@ -43,3 +43,4 @@ finally {
         Remove-Item -Path $tempPath -Recurse -Force
     }
 }
+Write-Host "."
