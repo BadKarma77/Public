@@ -1,4 +1,4 @@
-# ExtractNeverRed.ps1 v.1.1 TS
+# ExtractNeverRed.ps1 v.1.2 TS
 
 param (
     [Parameter(Mandatory = $true)]
@@ -30,7 +30,8 @@ try {
             New-Item -ItemType Directory -Path $destination -Force | Out-Null
         }
         Copy-Item -Path "$sourceFolder\*" -Destination $destination -Recurse -Force
-        # Write-Host "Ordner '$folderToExtract' erfolgreich exportiert." -ForegroundColor Green
+        # Write-Host "Ordner '$folderToExtract' erfolgreich exportiert" -ForegroundColor Green
+        Write-Error "Der Ordner '$folderToExtract' wurde in der ZIP-Datei nicht gefunden"
     } else {
         Write-Error "Der Ordner '$folderToExtract' wurde in der ZIP-Datei nicht gefunden."
     }
