@@ -1,4 +1,4 @@
-﻿$zipPath = "C:\Install\Archives\NeverRed.zip"
+﻿$zipPath = "C:\Install\_Archives\NeverRed.zip"
 $destination = "C:\Install\NeverRed"
 $folderToExtract = "NeverRed-master"
 
@@ -13,7 +13,7 @@ try {
     if (Test-Path $sourceFolder) {
         if (-not (Test-Path $destination)) {
             New-Item -ItemType Directory -Path $destination -Force | Out-Null
-        }kopieren
+        }
         Copy-Item -Path "$sourceFolder\*" -Destination $destination -Recurse -Force
         Write-Host "Ordner '$folderToExtract' erfolgreich exportiert." -ForegroundColor Green
     } else {
