@@ -31,10 +31,10 @@ try {
         }
         Copy-Item -Path "$sourceFolder\*" -Destination $destination -Recurse -Force
         # Write-Host "Ordner '$folderToExtract' erfolgreich nach '$destination' exportiert" -ForegroundColor Green
-        Writelog "Ordner '$folderToExtract' erfolgreich nach '$destination' exportiert"
+        Writelog "Extracted '$folderToExtract' to '$destination'"
     } else {
         Write-Error "Der Ordner '$folderToExtract' wurde in der ZIP-Datei nicht gefunden."
-        Writelog "Der Ordner '$folderToExtract' wurde in der ZIP-Datei nicht gefunden"
+        Writelog "'$folderToExtract' not found in ZIP"
     }
 }
 finally {
