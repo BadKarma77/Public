@@ -12,13 +12,12 @@ $Version = "ExtractNeverRed.ps1 v1.2 TS"
 Write-Host $Version -ForegroundColor Green
 Writelog "* ExtractNeverRed.ps1 started *"
 
-#Write-Host $ZipPath,$Destination,$ExportFolder -ForegroundColor Green
+Write-Host $ZipPath,$Destination,$ExportFolder -ForegroundColor Green
 Writelog $ZipPath,$Destination,$ExportFolder
 
-# $zipPath = "C:\Install\_Archives\NeverRed.zip"
-# $destination = "C:\Install\NeverRed"
-# $folderToExtract = "NeverRed-master"
+Expand-Archive -Path $ZipPath -DestinationPath $Destination -Force
 
+<#
 $tempPath = Join-Path $env:TEMP "ZipExtractTemp_$(Get-Random)"
 New-Item -ItemType Directory -Path $tempPath -Force | Out-Null
 
@@ -45,3 +44,4 @@ finally {
     }
 }
 Write-Host "." -ForegroundColor Green
+#>
