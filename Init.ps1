@@ -42,6 +42,7 @@ New-Item -ItemType Directory -Force -Path C:\Install\_Archives
 # Set-Location C:\Install
 
 Invoke-WebRequest 'https://raw.githubusercontent.com/BadKarma77/Public/refs/heads/main/LangDE.ps1' -OutFile C:\Install\LangDE.ps1
+Invoke-WebRequest 'https://raw.githubusercontent.com/BadKarma77/Public/refs/heads/main/ImageVersion.ps1' -OutFile C:\Install\ImageVersion.ps1
 Invoke-WebRequest 'https://raw.githubusercontent.com/BadKarma77/Public/refs/heads/main/ExtractNeverRed.ps1' -OutFile C:\Install\ExtractNeverRed.ps1
 Invoke-WebRequest 'https://github.com/Deyda/NeverRed/archive/refs/heads/master.zip' -OutFile C:\Install\_Archives\NeverRed.zip
 
