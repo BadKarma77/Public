@@ -24,8 +24,8 @@ Remove-Item -Recurse -Force "C:\Temp"
 
 Writelog "* Init.ps1 started *" 
 
-Set-LocalUser -Name "l_admin" -PasswordNeverExpires $true
-Set-LocalUser -Name "l_admin" -AccountNeverExpires
+# Set-LocalUser -Name "l_admin" -PasswordNeverExpires $true
+# Set-LocalUser -Name "l_admin" -AccountNeverExpires
 
 Add-LocalGroupMember -Group "FSLogix Profile Exclude List" -Member "l_admin"
 Remove-LocalGroupMember -Group "FSLogix Profile Include List" -Member "\Everyone"
