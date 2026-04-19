@@ -1,4 +1,4 @@
-# Init.ps v.1.3 TS
+# Init.ps v.1.4 TS
 
 Clear
 
@@ -57,5 +57,12 @@ Set-Location C:\Install\NeverRed
 Writelog "* Starting NeverRed.ps1 *" 
 # & "C:\install\NeverRed\NeverRed.ps1" -GUIfile LastSetting.txt
 C:\install\NeverRed\NeverRed.ps1 -GUIfile LastSetting.txt
+
+$actionScript = "Set-TimeZone -Id 'W. Europe Standard Time'"
+$action = New-ScheduledTaskAction -Execute "PowerShell.exe" -Argument "-Command `"$actionScript`""
+$trigger = New-ScheduledTaskTrigger -AtStartup
+$principal = New-ScheduledTaskPrincipal -UserId "NT AUTHORITY\SYSTEM" -LogonType ServiceAccount -RunLevel Highest
+Register-ScheduledTask -TaskName "SetTimeZoneAtStartup" -Action $action -Trigger $trigger -Principal $principal -Force
+
 Writelog "Init.ps1 finished" 
 
