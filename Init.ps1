@@ -43,20 +43,31 @@ New-Item -ItemType Directory -Force -Path C:\Install\_Archives
 
 Invoke-WebRequest 'https://raw.githubusercontent.com/BadKarma77/Public/refs/heads/main/LangDE.ps1' -OutFile C:\Install\LangDE.ps1
 Invoke-WebRequest 'https://raw.githubusercontent.com/BadKarma77/Public/refs/heads/main/ImageVersion.ps1' -OutFile C:\Install\ImageVersion.ps1
-Invoke-WebRequest 'https://raw.githubusercontent.com/BadKarma77/Public/refs/heads/main/ExtractNeverRed.ps1' -OutFile C:\Install\ExtractNeverRed.ps1
+# Invoke-WebRequest 'https://raw.githubusercontent.com/BadKarma77/Public/refs/heads/main/ExtractNeverRed.ps1' -OutFile C:\Install\ExtractNeverRed.ps1
+Invoke-WebRequest 'https://raw.githubusercontent.com/BadKarma77/Public/refs/heads/main/ExtractZip.ps1' -OutFile C:\Install\ExtractZip.ps1
+Invoke-WebRequest 'https://raw.githubusercontent.com/BadKarma77/Public/refs/heads/main/bdi.txt' -OutFile C:\Install\bdi.txt
 Invoke-WebRequest 'https://github.com/Deyda/NeverRed/archive/refs/heads/master.zip' -OutFile C:\Install\_Archives\NeverRed.zip
+Invoke-WebRequest 'https://github.com/The-Virtual-Desktop-Team/Virtual-Desktop-Optimization-Tool/archive/refs/heads/main.zip' -OutFile C:\Install\_Archives\VDOT.zip
 
 $ZipPath = "C:\Install\_Archives\NeverRed.zip"
 $Destination = "C:\Install\NeverRed"
 $ExportFolder = "NeverRed-master"
-Invoke-Expression "C:\Install\ExtractNeverRed.ps1 -ZipPath '$ZipPath' -Destination '$Destination' -ExportFolder '$ExportFolder'"
+# Invoke-Expression "C:\Install\ExtractNeverRed.ps1 -ZipPath '$ZipPath' -Destination '$Destination' -ExportFolder '$ExportFolder'"
+Invoke-Expression "C:\Install\ExtractZip.ps1 -ZipPath '$ZipPath' -Destination '$Destination' -ExportFolder '$ExportFolder'"
+
+$ZipPath = "C:\Install\_Archives\VDOT.zip"
+$Destination = "C:\Install\VDOT"
+$ExportFolder = "Virtual-Desktop-Optimization-Tool-main"
+Invoke-Expression "C:\Install\ExtractZip.ps1 -ZipPath '$ZipPath' -Destination '$Destination' -ExportFolder '$ExportFolder'"
 
 Invoke-Expression "C:\Install\LangDE.ps1"
 
 Set-Location C:\Install\NeverRed
 Writelog "* Starting NeverRed.ps1 *" 
-# & "C:\install\NeverRed\NeverRed.ps1" -GUIfile LastSetting.txt
-C:\install\NeverRed\NeverRed.ps1 -GUIfile LastSetting.txt
+# & "C:\Install\NeverRed\NeverRed.ps1" -GUIfile LastSetting.txt
+# C:\Install\NeverRed\NeverRed.ps1 -GUIfile bdi.txt
+# C:\Install\NeverRed\NeverRed.ps1 -ESfile C:\Install\NeverRed\bdi.txt
+
 
 $actionScript = "Set-TimeZone -Id 'W. Europe Standard Time'"
 $action = New-ScheduledTaskAction -Execute "PowerShell.exe" -Argument "-Command `"$actionScript`""
