@@ -1,4 +1,4 @@
-Red# Init.ps v.1.5 TS
+# Init.ps v.1.5 TS
 
 Clear
 
@@ -24,10 +24,12 @@ Remove-Item -Recurse -Force "C:\Temp"
 
 Writelog "* Init.ps1 started *" 
 
+### Not with CIT ###
 # Set-LocalUser -Name "l_admin" -PasswordNeverExpires $true
 # Set-LocalUser -Name "l_admin" -AccountNeverExpires
-
 Add-LocalGroupMember -Group "FSLogix Profile Exclude List" -Member "l_admin"
+### Not with CIT ###
+
 Remove-LocalGroupMember -Group "FSLogix Profile Include List" -Member "\Everyone"
 #Remove-LocalGroupMember -Group "FSLogix Profile Include List" -Member "\Jeder"
 Remove-LocalGroupMember -Group "FSLogix ODFC Include List" -Member "\Everyone"
@@ -69,15 +71,14 @@ Set-Location C:\Install\NeverRed
 Writelog "* Starting NeverRed.ps1 *" 
 # & "C:\Install\NeverRed\NeverRed.ps1" -GUIfile LastSetting.txt
 # C:\Install\NeverRed\NeverRed.ps1 -GUIfile bdi.txt
-# C:\Install\NeverRed\NeverRed.ps1 -ESfile C:\Install\NeverRed\bdi.txt
+C:\Install\NeverRed\NeverRed.ps1 -ESfile C:\Install\NeverRed\bdi.txt
 
-<#
+Writelog "CreateTask SetTimeZoneAtStartup" 
 $actionScript = "Set-TimeZone -Id 'W. Europe Standard Time'"
 $action = New-ScheduledTaskAction -Execute "PowerShell.exe" -Argument "-Command `"$actionScript`""
 $trigger = New-ScheduledTaskTrigger -AtStartup
 $principal = New-ScheduledTaskPrincipal -UserId "NT AUTHORITY\SYSTEM" -LogonType ServiceAccount -RunLevel Highest
 Register-ScheduledTask -TaskName "SetTimeZoneAtStartup" -Action $action -Trigger $trigger -Principal $principal -Force
-#>
 
 Writelog "Init.ps1 finished" 
 
