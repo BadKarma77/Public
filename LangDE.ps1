@@ -1,4 +1,4 @@
-$Version = "LangDE.ps1 v1.1 TS"
+$Version = "LangDE.ps1 v1.2 TS"
 Write-Host $Version -ForegroundColor Green
 Writelog "* LangDE.ps1 started *" 
 
