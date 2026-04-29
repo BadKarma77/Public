@@ -1,4 +1,4 @@
-# Init.ps v.1.5 TS
+Red# Init.ps v.1.5 TS
 
 Clear
 
@@ -55,7 +55,7 @@ $ExportFolder = "NeverRed-master"
 # Invoke-Expression "C:\Install\ExtractNeverRed.ps1 -ZipPath '$ZipPath' -Destination '$Destination' -ExportFolder '$ExportFolder'"
 Invoke-Expression "C:\Install\ExtractZip.ps1 -ZipPath '$ZipPath' -Destination '$Destination' -ExportFolder '$ExportFolder'"
 Rename-Item -Path "C:\Install\NeverRed-master" -NewName "NeverRed"
-
+Move-Item -Path "C:\Install\bdi.txt" -Destination "C:\Install\NeverRed"
 
 $ZipPath = "C:\Install\_Archives\VDOT.zip"
 $Destination = "C:\Install"
@@ -71,12 +71,13 @@ Writelog "* Starting NeverRed.ps1 *"
 # C:\Install\NeverRed\NeverRed.ps1 -GUIfile bdi.txt
 # C:\Install\NeverRed\NeverRed.ps1 -ESfile C:\Install\NeverRed\bdi.txt
 
-
+<#
 $actionScript = "Set-TimeZone -Id 'W. Europe Standard Time'"
 $action = New-ScheduledTaskAction -Execute "PowerShell.exe" -Argument "-Command `"$actionScript`""
 $trigger = New-ScheduledTaskTrigger -AtStartup
 $principal = New-ScheduledTaskPrincipal -UserId "NT AUTHORITY\SYSTEM" -LogonType ServiceAccount -RunLevel Highest
 Register-ScheduledTask -TaskName "SetTimeZoneAtStartup" -Action $action -Trigger $trigger -Principal $principal -Force
+#>
 
 Writelog "Init.ps1 finished" 
 
