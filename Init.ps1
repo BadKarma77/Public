@@ -48,7 +48,7 @@ New-Item -ItemType Directory -Force -Path C:\Install\_Archives
 # Set-Location C:\Install
 
 Invoke-WebRequest 'https://raw.githubusercontent.com/BadKarma77/Public/refs/heads/main/LangDE.ps1' -OutFile C:\Install\LangDE.ps1
-Invoke-WebRequest 'https://raw.githubusercontent.com/BadKarma77/Public/refs/heads/main/ImageVersion.ps1' -OutFile C:\Install\ImageVersion.ps1
+# Invoke-WebRequest 'https://raw.githubusercontent.com/BadKarma77/Public/refs/heads/main/ImageVersion.ps1' -OutFile C:\Install\ImageVersion.ps1
 Invoke-WebRequest 'https://raw.githubusercontent.com/BadKarma77/Public/refs/heads/main/ExtractZip.ps1' -OutFile C:\Install\ExtractZip.ps1
 Invoke-WebRequest 'https://raw.githubusercontent.com/BadKarma77/Public/refs/heads/main/bdi.txt' -OutFile C:\Install\bdi.txt
 Invoke-WebRequest 'https://github.com/Deyda/NeverRed/archive/refs/heads/master.zip' -OutFile C:\Install\_Archives\NeverRed.zip
@@ -86,6 +86,10 @@ Register-ScheduledTask -TaskName "SetTimeZoneAtStartup" -Action $action -Trigger
 # Start Windows updates
 # Set-Service -Name wuauserv -StartupType Manual
 # Start-Service -Name wuauserv
+
+New-Item -Path  "HKLM:\Software\OperationalServices" -Force
+Set-ItemProperty -Path "HKLM:\Software\OperationalServices" -Name "ImageName" -Value ($env:COMPUTERNAME) -Type String
+Set-ItemProperty -Path "HKLM:\Software\OperationalServices" -Name "ImageVersion" -Value ('1.{0}.{1}' -f (Get-Date -Format "yyyyMMdd"), (Get-Date -Format "HHmm")) -Type String
 
 Writelog "Init.ps1 finished" 
 
