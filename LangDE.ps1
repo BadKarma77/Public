@@ -28,4 +28,4 @@ Enable-ScheduledTask -TaskName "\Microsoft\Windows\LanguageComponentsInstaller\R
 $stopwatch.Stop()
 $elapsedTime = $stopwatch.Elapsed
 
-Writelog "* LangDE.ps1 finished * ",$elapsedTime 
+Writelog "* LangDE.ps1 finished *"
