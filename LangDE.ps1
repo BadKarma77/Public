@@ -21,8 +21,9 @@ $NewList = New-WinUserLanguageList -Language de-DE
 Write-Host "Set-WinUserLanguageList" -ForegroundColor Green
 Set-WinUserLanguageList -LanguageList $NewList -Force
 
-Write-Host "Re-enable tasks" -ForegroundColor Green
+Write-Host "Re-enable tasks #1" -ForegroundColor Green
 Enable-ScheduledTask -TaskName "\Microsoft\Windows\LanguageComponentsInstaller\Installation"
+Write-Host "Re-enable tasks #2" -ForegroundColor Green
 Enable-ScheduledTask -TaskName "\Microsoft\Windows\LanguageComponentsInstaller\ReconcileLanguageResources"
 
 $stopwatch.Stop()
