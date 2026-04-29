@@ -1,4 +1,4 @@
-# Init.ps v.1.4 TS
+# Init.ps v.1.5 TS
 
 Clear
 
@@ -50,15 +50,18 @@ Invoke-WebRequest 'https://github.com/Deyda/NeverRed/archive/refs/heads/master.z
 Invoke-WebRequest 'https://github.com/The-Virtual-Desktop-Team/Virtual-Desktop-Optimization-Tool/archive/refs/heads/main.zip' -OutFile C:\Install\_Archives\VDOT.zip
 
 $ZipPath = "C:\Install\_Archives\NeverRed.zip"
-$Destination = "C:\Install\NeverRed"
+$Destination = "C:\Install"
 $ExportFolder = "NeverRed-master"
 # Invoke-Expression "C:\Install\ExtractNeverRed.ps1 -ZipPath '$ZipPath' -Destination '$Destination' -ExportFolder '$ExportFolder'"
 Invoke-Expression "C:\Install\ExtractZip.ps1 -ZipPath '$ZipPath' -Destination '$Destination' -ExportFolder '$ExportFolder'"
+Rename-Item -Path "C:\Install\NeverRed-master" -NewName "NeverRed"
+
 
 $ZipPath = "C:\Install\_Archives\VDOT.zip"
-$Destination = "C:\Install\VDOT"
+$Destination = "C:\Install"
 $ExportFolder = "Virtual-Desktop-Optimization-Tool-main"
 Invoke-Expression "C:\Install\ExtractZip.ps1 -ZipPath '$ZipPath' -Destination '$Destination' -ExportFolder '$ExportFolder'"
+Rename-Item -Path "C:\Install\Virtual-Desktop-Optimization-Tool-main" -NewName "VDOT"
 
 Invoke-Expression "C:\Install\LangDE.ps1"
 
