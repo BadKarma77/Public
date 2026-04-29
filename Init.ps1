@@ -19,10 +19,14 @@ if (Test-Path $delfile) {
     Remove-Item -Path $delfile -Force
 }
 
+Writelog "* Init.ps1 started *" 
+
+# Stop Windows updates
+Stop-Service -Name wuauserv
+Set-Service -Name wuauserv -StartupType Disabled
+
 Remove-Item -Recurse -Force "C:\Install"
 Remove-Item -Recurse -Force "C:\Temp"
-
-Writelog "* Init.ps1 started *" 
 
 ### Not with CIT ###
 # Set-LocalUser -Name "l_admin" -PasswordNeverExpires $true
@@ -45,7 +49,6 @@ New-Item -ItemType Directory -Force -Path C:\Install\_Archives
 
 Invoke-WebRequest 'https://raw.githubusercontent.com/BadKarma77/Public/refs/heads/main/LangDE.ps1' -OutFile C:\Install\LangDE.ps1
 Invoke-WebRequest 'https://raw.githubusercontent.com/BadKarma77/Public/refs/heads/main/ImageVersion.ps1' -OutFile C:\Install\ImageVersion.ps1
-# Invoke-WebRequest 'https://raw.githubusercontent.com/BadKarma77/Public/refs/heads/main/ExtractNeverRed.ps1' -OutFile C:\Install\ExtractNeverRed.ps1
 Invoke-WebRequest 'https://raw.githubusercontent.com/BadKarma77/Public/refs/heads/main/ExtractZip.ps1' -OutFile C:\Install\ExtractZip.ps1
 Invoke-WebRequest 'https://raw.githubusercontent.com/BadKarma77/Public/refs/heads/main/bdi.txt' -OutFile C:\Install\bdi.txt
 Invoke-WebRequest 'https://github.com/Deyda/NeverRed/archive/refs/heads/master.zip' -OutFile C:\Install\_Archives\NeverRed.zip
@@ -79,6 +82,10 @@ $action = New-ScheduledTaskAction -Execute "PowerShell.exe" -Argument "-Command 
 $trigger = New-ScheduledTaskTrigger -AtStartup
 $principal = New-ScheduledTaskPrincipal -UserId "NT AUTHORITY\SYSTEM" -LogonType ServiceAccount -RunLevel Highest
 Register-ScheduledTask -TaskName "SetTimeZoneAtStartup" -Action $action -Trigger $trigger -Principal $principal -Force
+
+# Start Windows updates
+# Set-Service -Name wuauserv -StartupType Manual
+# Start-Service -Name wuauserv
 
 Writelog "Init.ps1 finished" 
 
